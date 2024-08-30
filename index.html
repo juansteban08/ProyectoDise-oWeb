@@ -31,17 +31,17 @@
         <h2>Nuestro Menú</h2>
         <div class="menu-items">
             <div class="menu-item">
-                <img src="ensalada.jpg" alt="Ensalada">
+                <img src="imagenes/ensalada.jpg" alt="Ensalada">
                 <h3>Ensalada Detox</h3>
                 <p>Fresca y llena de sabor, ideal para revitalizar tu cuerpo.</p>
             </div>
             <div class="menu-item">
-                <img src="smoothie.jpg" alt="Smoothie">
+                <img src="imagenes/smoothie.jpg" alt="Smoothie">
                 <h3>Smoothie Energético</h3>
                 <p>Una explosión de frutas y nutrientes en cada sorbo.</p>
             </div>
             <div class="menu-item">
-                <img src="quinoa.jpg" alt="Quinoa">
+                <img src="imagenes/quinoa.webp" alt="Quinoa">
                 <h3>Quinoa con Vegetales</h3>
                 <p>La combinación perfecta de proteínas y fibra.</p>
             </div>
@@ -55,14 +55,13 @@
 
     <section id="contacto" class="contact">
         <h2>Contacto</h2>
-        <form action="#">
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Correo Electrónico" required>
-            <textarea placeholder="Mensaje" required></textarea>
-            <button type="submit" class="btn">Enviar</button>
-        </form>
+        <form action="http://localhost:5000/api/contacto" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+            <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>              
     </section>
-
     <footer>
         <p>&copy; 2024 Fitness Bites. Todos los derechos reservados.</p>
     </footer>
