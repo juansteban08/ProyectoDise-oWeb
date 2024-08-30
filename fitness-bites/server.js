@@ -21,9 +21,9 @@ mongoose.connect('mongodb+srv://juanstebanvalverde:AIcnluNZrG7bATQJ@cluster0.doh
 
 // Definir un esquema de datos para los contactos
 const contactoSchema = new mongoose.Schema({
-    nombre: String,
-    correo: String,
-    mensaje: String
+    nombre: { type: String, required: true },
+    correo: { type: String, required: true, unique: true },
+    mensaje: { type: String, required: true }
 });
 
 // Crear un modelo basado en el esquema
@@ -39,7 +39,7 @@ app.post('/api/contacto', (req, res) => {
 
     nuevoContacto.save()
         .then(() => res.status(200).json({ message: 'Contacto guardado exitosamente' }))
-        .catch(err => res.status(400).json({ error: err }));
+        .catch(err => res.status(400).json({ error: err.message }));
 });
 
 // Iniciar el servidor
