@@ -55,15 +55,52 @@
 
     <section id="contacto" class="contact">
         <h2>Contacto</h2>
-        <form action="http://localhost:5000/api/contacto" method="POST">
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="email" name="correo" placeholder="Correo Electrónico" required>
-            <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+        <form id="contactoForm">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="email" id="correo" placeholder="Correo Electrónico" required>
+            <textarea id="mensaje" placeholder="Mensaje" required></textarea>
             <button type="submit">Enviar</button>
-        </form>              
+        </form>
+        <div id="mensajeExito" style="display: none; color: green;">Contacto guardado exitosamente.</div>
     </section>
+
     <footer>
         <p>&copy; 2024 Fitness Bites. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.getElementById('contactoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const mensaje = document.getElementById('mensaje').value;
+    
+            fetch('http://localhost:5000/api/contacto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre, correo, mensaje })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    // Mostrar mensaje de éxito
+                    const mensajeExito = document.getElementById('mensajeExito');
+                    mensajeExito.style.display = 'block';
+                    
+                    // Esperar 2 segundos y luego recargar la página
+                    setTimeout(() => {
+                        mensajeExito.style.display = 'none';
+                        location.reload();
+                    }, 2000);
+                } else {
+                    console.error('Error al guardar el contacto:', data.error);
+                }
+            })
+            .catch(error => console.error('Error en la solicitud:', error));
+        });
+    </script>
 </body>
 </html>
