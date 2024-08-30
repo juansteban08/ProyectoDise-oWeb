@@ -142,9 +142,67 @@ nav ul li a {
     font-size: 1.2em;
 }
 
+
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .hero {
+        height: 80vh;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .menu-item {
+        flex-basis: 100%;
+    }
+
+    .about, .contact {
+        padding: 30px 10px;
+    }
+
+    .contact form {
+        padding: 10px;
+    }
+
+    .contact form button {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
 }

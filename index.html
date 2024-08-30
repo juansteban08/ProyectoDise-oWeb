@@ -86,11 +86,9 @@
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    // Mostrar mensaje de éxito
                     const mensajeExito = document.getElementById('mensajeExito');
                     mensajeExito.style.display = 'block';
                     
-                    // Esperar 2 segundos y luego recargar la página
                     setTimeout(() => {
                         mensajeExito.style.display = 'none';
                         location.reload();
